@@ -1,0 +1,19 @@
+{
+    "registry-mirrors": [
+        "https://7bezldxe.mirror.aliyuncs.com/",
+        "https://IP:PORT/"
+    ],
+    "insecure-registries": [
+        "192.168.1.100",
+        "IP:PORT"
+    ],
+    "storage-driver": "overlay2",
+    "storage-opts": [
+        "overlay2.override_kernel_check=true"
+    ],
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "100m",
+        "max-file": "3"
+    }
+}
