@@ -10,10 +10,10 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 hostnamectl --static set-hostname $host_name
 
 sed -i "/^$ip_addr/d" /etc/hosts
-echo "$ip_addr $host_name" >> /etc/hosts
+echo "$ip_addr $host_name" >>/etc/hosts
 
 sed -i "/^HOSTNAME/d" /etc/sysconfig/network
-echo "HOSTNAME=$host_name" >> /etc/sysconfig/network
+echo "HOSTNAME=$host_name" >>/etc/sysconfig/network
 
 hostname -f
 
@@ -22,21 +22,21 @@ yum install -y curl
 #安装Docker
 
 yum remove docker \
-                  docker-client \
-                  docker-client-latest \
-                  docker-common \
-                  docker-latest \
-                  docker-latest-logrotate \
-                  docker-logrotate \
-                  docker-engine
+  docker-client \
+  docker-client-latest \
+  docker-common \
+  docker-latest \
+  docker-latest-logrotate \
+  docker-logrotate \
+  docker-engine
 
 yum install -y yum-utils \
   device-mapper-persistent-data \
   lvm2
 
 yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
+  --add-repo \
+  https://download.docker.com/linux/centos/docker-ce.repo
 
 yum install -y docker-ce docker-ce-cli containerd.io
 systemctl enable docker
