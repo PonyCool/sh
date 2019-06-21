@@ -52,12 +52,9 @@ EOF
 systemctl daemon-reload
 systemctl restart docker
 
-#安装pip
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python get-pip.py
-
 #安装docker-compose
-pip install docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 docker-compose -v
 
 #重启
